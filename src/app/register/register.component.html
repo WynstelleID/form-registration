@@ -1,0 +1,107 @@
+<div class="col-md-12">
+
+  <div class="card card-container">
+    <h4 class="label-signup">Sign Up</h4>
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3"
+            maxlength="20" #username="ngModel" />
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username.errors.maxlength">
+              Username must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group pl-4">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+            #password="ngModel" />
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first_name">First Name </label>
+          <input type="first_name" class="form-control" name="first_name" [(ngModel)]="form.first_name" required
+            first_name #first_name="ngModel" />
+          <div class="alert-danger" *ngIf="first_name.errors && f.submitted">
+            <div *ngIf="first_name.errors.required">First Name is required</div>
+          </div>
+        </div>
+        <div class="form-group pl-4">
+          <label for="last_name">Last Name </label>
+          <input type="last_name" class="form-control" name="last_name" [(ngModel)]="form.last_name" required last_name
+            #last_name="ngModel" />
+          <div class="alert-danger" *ngIf="last_name.errors && f.submitted">
+            <div *ngIf="last_name.errors.required">Last Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address </label>
+        <input type="address" class="form-control" name="address" [(ngModel)]="form.address" required address
+          #address="ngModel" />
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="address.errors.required">Address is required</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telephone">Telephone</label>
+          <input type="telephone" class="form-control" name="telephone" [(ngModel)]="form.telephone" required telephone
+            #telephone="ngModel" />
+          <div class="alert-danger" *ngIf="telephone.errors && f.submitted">
+            <div *ngIf="telephone.errors.required">telephone is required</div>
+          </div>
+        </div>
+        <div class="form-group pl-4">
+          <label for="city">City</label>
+          <input type="city" class="form-control" name="city" [(ngModel)]="form.city" required city #city="ngModel" />
+          <div class="alert-danger" *ngIf="city.errors && f.submitted">
+            <div *ngIf="city.errors.required">city is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="province">Province</label>
+          <input type="province" class="form-control" name="province" [(ngModel)]="form.province" required province
+            #province="ngModel" />
+          <div class="alert-danger" *ngIf="province.errors && f.submitted">
+            <div *ngIf="province.errors.required">Province is required</div>
+          </div>
+        </div>
+        <div class="form-group pl-4">
+          <label for="country">Country</label>
+          <input type="country" class="form-control" name="country" [(ngModel)]="form.country" required country
+            #country="ngModel" />
+          <div class="alert-danger" *ngIf="country.errors && f.submitted">
+            <div *ngIf="country.errors.required">Country is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block btn-signup">Sign Up</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>
